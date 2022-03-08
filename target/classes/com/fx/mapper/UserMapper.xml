@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fx.dao.UserDao">
+
+    <select id="doLogin" parameterType="String" resultType="com.fx.entity.User">
+        select * from user where username = #{username}
+    </select>
+
+    <insert id="addUser" >
+        insert into user (username,password,phoneNumber)
+        value (#{username},#{password},#{phoneNumber})
+    </insert>
+
+</mapper>

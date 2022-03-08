@@ -1,0 +1,166 @@
+/* 絨靏喝��絎号�颷�start */
+.content-desc{
+    /* 莅丞舟������*/
+    background-color: #F5F5F5;
+}
+/* �阪�絎遵墾綛銀戎��絖�絮�筝� */
+.container{
+    width: 1226px;
+    height: 100%;
+    margin: 0 auto;
+}
+/* ��絎号��蘂�start */
+.content-desc .box-hd{
+    height: 58px;
+    position:relative;
+}
+.content-desc .box-hd h2{
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    color: #333;
+}
+.content-desc .box-hd .more{
+    position: absolute;
+    right: 0;
+    top:0;
+}
+.content-desc .box-hd .more a{
+    font-size: 16px;
+    line-height: 58px;
+    color: #424242;
+}
+.content-desc .box-hd .more a i{
+    /* 莅丞舟����絎遵��蕭� */
+    width: 12px;
+    height: 12px;
+    /* ��菴�莅丞舟��莨壕�篏睡�紊翫�筝㊥�丞ず */
+    padding: 4px;
+    margin-left: 8px;
+    color: #fff;
+    font-size: 12px;
+    /* ��菴�vertical-align�ュ抗茵�茵�蕭� */
+    vertical-align: 2px;
+    border-radius: 12px;
+    background-color: #b0b0b0;
+}
+/* 藜�����貴�劫�蘂��� */
+.content-desc .box-hd .more:hover a{
+    color: #ff6700;
+}
+.content-desc .box-hd .more:hover a i{
+    background-color: #FF6700;
+}
+/* ��絎号��蘂�end */
+/*��絎壕���start*/
+/* 莅丞舟綏�捷��絖�紊у�� */
+.box-bd .row-l{
+    float: left;
+    width: 234px;
+}
+/* 莅丞舟�勈捷��絖�紊у�� */
+.box-bd .row-r{
+    float: left;
+    width: 992px;
+}
+.box-bd .row-l a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.box-bd .row-l a img{
+    width: 234px;
+    height: 614px;
+}
+.box-bd .row-r ul{
+    overflow: hidden;/* 羝��ゆ貴�� */
+}
+/* 莅丞舟�丞����篏�臀� */
+.box-bd .row-r ul li{
+    float: left;
+    height: 260px;
+    padding: 20px 0;
+    background-color: #fff;
+    width: 234px;
+    /*234*4=936+56=992px*/
+    position: relative;
+    margin-left:14px;
+    margin-bottom: 14px;
+}
+.box-bd .row-r ul li .figure{
+    width:160px ;
+    height: 160px;
+    margin: 0 auto 18px;
+}
+.box-bd .row-r ul li .figure a{
+    display: block;
+}
+/* 莅丞舟�丞��紊у�� */
+.box-bd .row-r ul li .figure a img{
+    width:160px ;
+    height: 160px;
+}
+/* 莅丞舟�����筝� */
+.box-bd .row-r ul li .title{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+.box-bd .row-r ul li .title a{
+    color: #333;
+}
+/* 莅丞舟��絎合�篁���篏�臀� */
+.box-bd .row-r ul li .desc{
+    height: 18px;
+    font-size:12px;
+    text-align: center;
+    color: #b0b0b0;
+    margin: 0 10px 10px;
+    /* ��菴�overflow篏粋��榊����������*/
+    overflow: hidden;
+    /* 筝��∵��丞ず */
+    white-space: nowrap;
+    /* ellipsis������咲�����丞ず筝榊���ュ�� */
+    text-overflow: ellipsis;
+}
+/* 莅丞舟篁傑�弱�筝㊤��莅丞舟蘂��� */
+.box-bd .row-r ul li .price{
+    text-align: center;
+    color: #ff6700;
+}
+/* 莅丞舟蕁狗���臀��丞ず��篆≧�� */
+.box-bd .row-r ul li .flag{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 20px;
+    background-color: #83c44e;
+    text-align: center;
+    color: #fff;
+    left: 50%;
+    margin-left: -32px;
+}
+/*��絎壕���end*/
+/* 絨靏喝��絎号�颷�end */
+/* 莅丞舟羲�羌��桁��start */
+.box-bd .row-l:hover{
+    /* ��菴�transform絮��т戎��膣�羃�y�劫������莉��� */
+    transform: translateY(-5px);
+    /* 莅丞舟絎���絎���菴�羝≧����筝�0.5腱� */
+    transition: .5s all;
+    /* 莅丞舟綵���絖�羲�羌����九���丞ず�堺�ョ���翫襲篏�臀�������綺� */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+}
+.box-bd .row-r ul li:hover{
+    transform: translateY(-5px);
+    transition: .5s all;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+}
+/* 莅丞舟羲�羌��桁��end */
+/* 羝��ゆ貴�� */
+.clearfix::after{
+    content: '';
+    clear: both;
+    display: block;
+}

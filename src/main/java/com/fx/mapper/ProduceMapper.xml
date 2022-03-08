@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fx.dao.ProduceDao">
+
+<select id="findProduceByProductTypeNo" parameterType="Integer" resultType="com.fx.entity.Produce">
+    select * from products where produceTypeNo = #{produceTypeNo} order by id desc
+</select>
+
+    <select id="findProduceByProduceNo" parameterType="String" resultType="com.fx.entity.Produce">
+        select * from products where produceNo = #{produceNo}
+    </select>
+
+<!--    <select id="findVersion" parameterType="Integer" resultType="com.fx.entity.Version">-->
+<!--        select * from version where produceNo = #{produceNo}-->
+<!--    </select>-->
+
+    <select id="findAllRam" parameterType="String" resultType="com.fx.entity.Ram">
+        select * from ram where produceNo = #{produceNo}
+    </select>
+
+    <select id="findAllColor" parameterType="String" resultType="com.fx.entity.Color">
+        select * from color where produceNo = #{produceNo}
+    </select>
+
+    <select id="findColorByProduceNo" resultType="com.fx.entity.Color">
+        select * from color where produceNo = #{arg0} and colorId = #{arg1}
+    </select>
+
+    <select id="findRamByProduceNoAndRamId" resultType="com.fx.entity.Ram">
+        select * from ram where produceNo = #{arg0} and ramId = #{arg1}
+    </select>
+
+    <select id="findRecommend" resultType="com.fx.entity.Recommend">
+        select * from recommend
+    </select>
+
+    <select id="findImg" parameterType="String" resultType="com.fx.entity.lunboImgPath">
+        select * from lunboImgPath where produceNo = #{produceNo}
+    </select>
+
+    <insert id="addProduce" parameterType="com.fx.entity.Produce">
+        insert into products(imgPath,produceName,miaoshu,price,produceTypeNo,produceNo,introduce)
+        values (#{imgPath},#{produceName},#{miaoshu},#{price},#{produceTypeNo},#{produceNo},#{introduce})
+    </insert>
+
+    <insert id="addColor" parameterType="com.fx.entity.Color">
+        insert into color(produceNo,color,colorId)
+        values (#{produceNo},#{color},#{colorId})
+    </insert>
+
+    <insert id="addRam" parameterType="com.fx.entity.Ram">
+        insert into ram(produceNo,ram,ramId,price)
+        values (#{produceNo},#{ram},#{ramId},#{price})
+    </insert>
+
+    <insert id="addLunboImg" parameterType="com.fx.entity.lunboImgPath">
+        insert into lunboImgPath(produceNo,imgPath)
+        values (#{produceNo},#{imgPath})
+    </insert>
+
+    <insert id="addIntroduceImg" parameterType="com.fx.entity.introduceImgPath">
+        insert into introduceImgPath(produceNo,imgPath)
+        values (#{produceNo},#{imgPath})
+    </insert>
+
+    <select id="findIntroduceImg" parameterType="String" resultType="com.fx.entity.introduceImgPath">
+        select * from introduceImgPath where produceNo = #{produceNo}
+    </select>
+
+    <select id="findProduceByName" parameterType="String" resultType="com.fx.entity.Produce">
+        select * from products where produceName like #{produceName}
+    </select>
+
+</mapper>

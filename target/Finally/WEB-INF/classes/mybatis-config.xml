@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+        <!-- 在Mybatis中  每添加一个mapper文件都要在Mybatis的主配值文件中添加路径 -->
+		<mapper resource="com/fx/mapper/UserMapper.xml"/>
+		<mapper resource="com/fx/mapper/TypeMapper.xml"/>
+		<mapper resource="com/fx/mapper/ProduceMapper.xml"/>
+		<mapper resource="com/fx/mapper/OrderMapper.xml"/>
+	</mappers>
+</configuration>

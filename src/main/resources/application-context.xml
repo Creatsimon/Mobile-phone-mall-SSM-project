@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+        ">
+
+	<!-- 开启扫描包 -->
+	<!-- <context:component-scan base-package="com.iflytek"></context:component-scan> -->
+	<!-- 3：因为在注入数据源对象时发现url  user  password driverClass 参数需要的值在jdbc.properties 文件中
+    需要在Spring的主配置文件中加载jdbc.properties文件
+    ，目的：加载资源文件，获取信息
+      -->
+    <bean id="jdbc" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+    	<property name="locations">
+    		<list>
+    			<value>classpath:jdbc.properties</value>
+    		</list>
+    	</property>
+    </bean>
+
+	<!-- 2：注入数据源对象   数据源的获取链接和关闭连接，加载驱动等等     目的：获取数据库的链接，-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!--获取数据库连接Connection   需要用户名，密码，链接地址信息 ，驱动类-->
+		<property name="driverClass" value="${driver}"/>
+		<property name="jdbcUrl" value="${url}"/>
+		<property name="user" value="${userName}"/>
+		<property name="password" value="${password}"/>
+	</bean>
+
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg index="0" ref="dataSource"/>
+    </bean>-->
+
+	<!-- 不使用jdbcTemplate 就要注入mybatis的核心类 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/><!-- 加载数据库配置 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"/><!-- 在spring的主配置文件中加载mybatis的主配置文件 -->
+	</bean>
+
+	<!-- 注入MapperScannerConfigurer 扫描dao接口-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定dao接口的包在哪里 -->
+		<property name="basePackage" value="com.fx.dao"/>
+		<!-- 跟mybatis的核心类 联系起来 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
+	<!-- 注入事务管理者对象 给开启事务的 transaction-manager-->
+	<bean id="tx" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 开启事务的注解
+ 	注意点：1：需要引入tx的命名空间
+ 			2：需要一个事务管理者 transaction-manager
+ 	 -->
+	<tx:annotation-driven  transaction-manager="tx"/>
+
+	<context:component-scan base-package="com.fx"/>
+   
+    
+</beans>

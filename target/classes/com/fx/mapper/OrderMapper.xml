@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fx.dao.OrderDao">
+
+    <insert id="buyPhone" parameterType="com.fx.entity.Orders">
+        insert into orders(orderId,produceName,color,ram,username,orderTime,produceNo,orderMoney,imgPath,isPay,produceTypeNo)
+        values (#{orderId},#{produceName},#{color},#{ram},#{username},#{orderTime},#{produceNo},#{orderMoney},#{imgPath},#{isPay},#{produceTypeNo})
+    </insert>
+
+    <select id="findAllOrders" resultType="com.fx.entity.Orders">
+        select * from orders  where isPay = 1
+    </select>
+
+
+    <delete id="deleteOrder" parameterType="String">
+        delete from orders where orderId = #{orderId}
+    </delete>
+
+    <select id="findNoPayOrders" parameterType="String" resultType="com.fx.entity.Orders">
+        select * from orders where isPay = 0 and username = #{username} order by id desc
+    </select>
+
+    <insert id="addShoppingCat" parameterType="com.fx.entity.Orders">
+        insert into orders(orderId,produceName,color,ram,username,orderTime,produceNo,orderMoney,imgPath,produceTypeNo)
+        values (#{orderId},#{produceName},#{color},#{ram},#{username},#{orderTime},#{produceNo},#{orderMoney},#{imgPath},#{produceTypeNo})
+    </insert>
+
+    <select id="findOrderByOrderId" parameterType="String" resultType="com.fx.entity.Orders">
+        select * from orders where orderId = #{orderId}
+    </select>
+
+    <update id="updateOrderIsPay" parameterType="String">
+        update orders set isPay = 1 where orderId = #{orderId}
+    </update>
+
+    <select id="findAllOrdersByUsername" parameterType="String" resultType="com.fx.entity.Orders">
+        select * from orders where username = #{username} and isPay = 1
+    </select>
+
+    <insert id="addTureOrder" parameterType="com.fx.entity.Orders">
+        insert into tureOrders(orderId,produceName,color,ram,username,orderTime,produceNo,orderMoney,imgPath,isPay,produceTypeNo)
+        values (#{orderId},#{produceName},#{color},#{ram},#{username},#{orderTime},#{produceNo},#{orderMoney},#{imgPath},#{isPay},#{produceTypeNo})
+    </insert>
+
+    <select id="findAllTureOrders" resultType="com.fx.entity.Orders">
+        select * from tureOrders
+    </select>
+
+    <select id="findAllTureOrdersByTime" parameterType="String" resultType="com.fx.entity.Orders">
+        select * from tureorders where DATE(orderTime) = #{orderTime} order by id
+    </select>
+
+</mapper>
